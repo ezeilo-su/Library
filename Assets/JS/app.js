@@ -6,12 +6,14 @@ const ainput = document.querySelector('.b-author');
 const ninput = document.querySelector('.b-pages');
 
 const bookCreate = (bookTitle, bookAuthor, bookNumOfPages, bookRead) => {
-  let title = bookTitle;
-  let author = bookAuthor;
-  let numOfPages = bookNumOfPages;
-  let read = bookRead;
+  const title = bookTitle;
+  const author = bookAuthor;
+  const numOfPages = bookNumOfPages;
+  const read = bookRead;
 
-  return { title, author, numOfPages, read };
+  return {
+    title, author, numOfPages, read,
+  };
 };
 
 // Tests -------------------------
@@ -30,7 +32,7 @@ const myModule = (() => {
     children.forEach(child => {
       wrap.appendChild(child);
     });
-  }
+  };
 
   const showLibrary = () => {
     libWrap.innerHTML = '';
@@ -42,12 +44,12 @@ const myModule = (() => {
       btitle.innerText = library[i].title;
       asubtitle.innerText = `Author: ${library[i].author.toUpperCase()}`;
       content.innerHTML = `Pages: ${library[i].numOfPages} ${library[i].read}`;
-  
+
       bookCard.setAttribute('class', 'book-card');
       btitle.setAttribute('class', 'card-title');
       asubtitle.setAttribute('class', 'card-author');
       content.classList = 'card-content';
-  
+
       const rbtn = document.createElement('button');
       rbtn.innerHTML = 'Delete Book';
       rbtn.id = `remove-${i}`;
@@ -58,10 +60,10 @@ const myModule = (() => {
       sbtn.id = `status-${i}`;
       sbtn.className = 'btn';
       sbtn.setAttribute('onclick', `readStatus(${i})`);
-      appendContent(bookCard, [ btitle, asubtitle, content, rbtn, sbtn ]);
+      appendContent(bookCard, [btitle, asubtitle, content, rbtn, sbtn]);
       libWrap.appendChild(bookCard);
     }
-  }
+  };
   return { showLibrary };
 })();
 
