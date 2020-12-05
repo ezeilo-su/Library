@@ -5,20 +5,19 @@ const tinput = document.querySelector('.b-title');
 const ainput = document.querySelector('.b-author');
 const ninput = document.querySelector('.b-pages');
 
-const bookCreate = (bookTitle, bookAuthor, bookNumOfPages, bookRead) => {
-  const title = bookTitle;
-  const author = bookAuthor;
-  const numOfPages = bookNumOfPages;
-  const read = bookRead;
 
-  return {
-    title, author, numOfPages, read,
-  };
-};
+const Book = class {
+  constructor(title, author, numOfPages, read){
+    this.title = title;
+    this.author = author;
+    this.numOfPages = numOfPages;
+    this.read = read;
+  }
+}
 
 // Tests -------------------------
-const book1 = bookCreate('may', 'sunday', '500', 'Not Read');
-const book2 = bookCreate('december', 'jurgen', '300', 'Read');
+const book1 = new Book('may', 'sunday', '500', 'Not Read');
+const book2 = new Book('december', 'jurgen', '300', 'Read');
 
 library.push(book1);
 library.push(book2);
@@ -71,7 +70,7 @@ function addBookToLibrary() {
   if (tinput.value === '' || ainput.value === '' || ninput.value === '') {
     alert('All form fields must be filled!');
   } else {
-    const book = bookCreate(tinput.value, ainput.value, ninput.value);
+    const book = new Book(tinput.value, ainput.value, ninput.value);
     library.push(book);
     form.className = 'hide';
     myModule.showLibrary();
